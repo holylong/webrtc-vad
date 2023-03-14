@@ -20,14 +20,14 @@ file(GLOB WEBRTC_VAD_SRCS thirdparty/webrtc/common_audio/*/*.c
 
 add_library(vad SHARED ${WEBRTC_VAD_SRCS})
 
-add_executable(sample_buffer_cut ${CMAKE_CURRENT_SOURCE_DIR}/sample_buffer_cut.c)
+add_executable(simple_buffer_cut ${CMAKE_CURRENT_SOURCE_DIR}/simple_buffer_cut.c)
 
 if(UNIX)
     message(STATUS "==>> is unix")
     target_link_libraries(vad PRIVATE pthread)
-    target_link_libraries(sample_buffer_cut pthread)
+    target_link_libraries(simple_buffer_cut pthread)
 else()
     message(STATUS "==>> is other os")
 endif(UNIX)
 
-target_link_libraries(sample_buffer_cut vad)
+target_link_libraries(simple_buffer_cut vad)
